@@ -1,6 +1,7 @@
 package osx
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -66,7 +67,7 @@ func ParseScutilDns(data string) (*DnsInfo, error) {
 			if strings.HasPrefix(name, "search domain") {
 				currentResolver.SearchDomains = append(currentResolver.SearchDomains, value)
 			} else if strings.HasPrefix(name, "nameserver") {
-				currentResolver.Nameservers = append(currentResolver.Nameservers, value+":53")
+				currentResolver.Nameservers = append(currentResolver.Nameservers, fmt.Sprintf("[%s]:53", value))
 			} else if name == "reach" {
 				currentResolver.Reachable = !strings.Contains(value, "Not Reachable")
 			} else if name == "domain" {
