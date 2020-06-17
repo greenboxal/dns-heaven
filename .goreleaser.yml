@@ -19,3 +19,35 @@ archives:
     format_overrides:
     - goos: windows
       format: zip
+
+brews:
+  - name: dns-heaven
+    url_template: "https://github.com/greenboxal/dns-heaven/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    homepage: "https://github.com/greenboxal/dns-heaven"
+    description: "Fixes stupid macOS DNS stack (/etc/resolv.conf)"
+    github:
+      owner: jduepmeier
+      name: homebrew-dns-heaven
+    skip_upload: true
+    folder: Formula
+    dependencies:
+      - name: go
+    plist: |
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+      <dict>
+          <key>Label</key>
+          <string>com.greenboxal.dnsheaven</string>
+          <key>ProgramArguments</key>
+          <array>
+              <string>#{bin}/dns-heaven</string>
+          </array>
+          <key>KeepAlive</key>
+          <true/>
+          <key>RunAtLoad</key>
+          <true/>
+      </dict>
+      </plist>
+    test: |
+      system "#{bin}/dns-heaven -version"
