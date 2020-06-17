@@ -17,13 +17,13 @@ archives:
       386: i386
       amd64: x86_64
     format_overrides:
-    - goos: windows
-      format: zip
+      - goos: windows
+        format: zip
 
 brews:
   - name: dns-heaven
-    url_template: "https://github.com/greenboxal/dns-heaven/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-    homepage: "https://github.com/greenboxal/dns-heaven"
+    url_template: "https://github.com/jduepmeier/dns-heaven/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    homepage: "https://github.com/jduepmeier/dns-heaven"
     description: "Fixes stupid macOS DNS stack (/etc/resolv.conf)"
     github:
       owner: jduepmeier
